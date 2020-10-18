@@ -53,7 +53,13 @@ void exclusive_scan(int* input, int N, int* result)
     // on the CPU.  Your implementation will need to make multiple calls
     // to CUDA kernel functions (that you must write) to implement the
     // scan.
-
+    int rounded_length = nextPow2(N); 
+    extern __shared__ float temp[]; 
+    thid = threadIdx.x; 
+    int offset = 1; 
+    temp[2*thid] = input[2*thid]; 
+    temp[2*thid+1] = input[2*thid+1]; 
+    for (int d = n>>1; d > 0; d >>=1)   
 
 }
 
